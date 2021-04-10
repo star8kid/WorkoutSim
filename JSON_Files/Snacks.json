@@ -1,0 +1,18 @@
+{
+    "snackOne":
+    {
+        "snackName":"Orange",
+        "snackDesc":"A healthy, round citrus fruit. Yummy!",
+        "calCost": 10,
+        "joyPower": 2.0
+    },
+
+    "snackTwo":{
+        "snackName":"Bannana",
+        "snackDesc":"A tropical fruit. Great with smoothies, but you don't own a blender.",
+        "calCost": 15,
+        "joyPower": 4.0,
+        "unlockCost": 100
+    }
+
+}
