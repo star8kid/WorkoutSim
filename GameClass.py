@@ -156,7 +156,6 @@ class GameWindow:
         PlayerClass.Player.doSnack(snack)
         self.updateWindow()
 
-
     #Snack Upgrade function
 
     def snackUpgrade(self, snack):
@@ -198,7 +197,6 @@ class GameWindow:
 
         
 
-        
     def startGame(self):
         # This method will start the game and run itself continuously
         print("The game should've started")
