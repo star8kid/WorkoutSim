@@ -22,42 +22,6 @@ with open("C:/Users/Anthony/workspace/code_workspace/Python/Game_Codes/WorkoutSi
 ExerciseDataFile.close()
 
 
-class Snack:
-    def __init__(self, snackName, snackDesc, calCost, joyPower):
-        self.snackName = snackName
-        self.snackDesc = snackDesc
-        self.calCost = calCost
-        self.joyPower = joyPower
-
-snackOne = Snack("Orange", "A healthy, round citrus fruit. Yummy!", 10, 2.0)
-
-class SnackUpgrade(Snack):
-
-    upgradePreviewMessage = "This snack has not been unlocked yet"
-
-    def __init__(self, snackName, snackDesc, calCost, joyPower, unlockCost):
-        self.snackName = snackName
-        self.snackDesc = snackDesc
-        self.calCost = calCost
-        self.joyPower = joyPower
-        self.unlockCost = unlockCost
-
-
-
-snackTwo = SnackUpgrade("Banana", "A tropical fruit. \nTastier than an orange!", 20, 5.0, 100)
-
-
-class Exercise:
-    def __init__(self, exerciseName, exerciseDesc, calGain):
-        self.exerciseName = exerciseName
-        self.exerciseDesc = exerciseDesc
-        self.calGain = calGain
-
-
-exerciseOne = Exercise("Running", "You already know how to \nwalk, so that doesn't count...", 1)
-
-
-
 
 """
 

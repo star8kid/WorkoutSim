@@ -9,10 +9,21 @@
 
     "snackTwo":{
         "snackName":"Bannana",
-        "snackDesc":"A tropical fruit. Great with smoothies, but you don't own a blender.",
+        "snackDesc":"A tropical fruit. Great with smoothies,\nbut you don't own a blender.",
         "calCost": 15,
         "joyPower": 4.0,
+        "unlockPreviewMessage": "This snack has not been unlocked yet",
         "unlockCost": 100
-    }
+    },
+
+    "snackThree":{
+        "snackName":"Popcorn",
+        "snackDesc":"Light puffballs of awesomeness.\nLow salt to stay healthy still.",
+        "calCost": 20,
+        "joyPower": 6.0,
+        "unlockPreviewMessage": "This snack has not been unlocked yet",
+        "unlockCost": 1200
+    }    
+
 
 }

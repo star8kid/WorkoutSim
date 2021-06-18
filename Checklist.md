@@ -5,8 +5,6 @@
 
 - ✅ Create a timer that will constantly decrease the happiness bar
 - 🟩 Make sure that timer runs only while the game is open
-- 🟩
-- 🟩
 
 #### Game Design / Looks
 
@@ -17,7 +15,7 @@
 
 #### Features
 
-- 🟩 Make unlockable buttons and upgrades
+- ✅ Make unlockable buttons and upgrades
 - 🟩 When the player loses, show a splash screen with the total time and also allow them to play again
 - 🟩 ***Whim*** Add music to play in the app; Make it muteable as well
 - 🟩 ***Whim*** Add a highscores button and window to display the top ten highscores **Note**: This will require that you know how to save data to files in order for the highscores to show up.

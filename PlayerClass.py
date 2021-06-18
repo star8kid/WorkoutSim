@@ -22,18 +22,16 @@ class Player:
     
     @staticmethod
     def doExercise(exercise):
-        Player.caloriesBurned += exercise.calGain
+        Player.caloriesBurned += exercise["calGain"]
 
     @staticmethod
     def doSnack(snack):
-        if(Player.caloriesBurned - snack.calCost < 0):
+        if(Player.caloriesBurned - snack["calCost"] < 0):
             print("The player doesn't have enough calories!")
             pass
-        elif(Player.happinessAmount + snack.joyPower > Player.maxHappiness):
-            Player.caloriesBurned -= snack.calCost
+        elif(Player.happinessAmount + snack["joyPower"] > Player.maxHappiness):
+            Player.caloriesBurned -= snack["calCost"]
             Player.happinessAmount = Player.maxHappiness
         else:
-            Player.caloriesBurned -= snack.calCost
-            Player.happinessAmount += snack.joyPower
-            # print(f"The player's calories is now {Player.caloriesBurned} and their happiness is {Player.happinessAmount}")
-
+            Player.caloriesBurned -= snack["calCost"]
+            Player.happinessAmount += snack["joyPower"]

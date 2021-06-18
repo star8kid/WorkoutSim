@@ -31,8 +31,6 @@ from tkinter import font
 
 
 
-
-
 #Start of the application
 app = MenuClass.StartingMenu()
 game = GameClass.GameWindow()
@@ -53,7 +51,6 @@ game.backButton.config( command = lambda : app.switchToMenu(game.gameWindow))
 
 # Print out all the font families
 # print(font.families())
-
 
 
 app.root.mainloop()

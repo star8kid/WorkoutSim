@@ -44,33 +44,44 @@ class GameWindow:
         self.snackLabel = Label(self.gameFrame, text = "Snacks")
         self.snackLabel.grid( column = 1 , row = 2 )
 
-        self.snackAct1 = ttk.Button(self.gameFrame, text = GameData.snackOne.snackName, width = self.buttonWidth)
-        self.snackAct1['command'] = lambda : self.snackButtonCommand(GameData.snackOne)
+        self.snackAct1 = ttk.Button(self.gameFrame, text = GameData.SnackData["snackOne"]["snackName"], width = self.buttonWidth)
+        self.snackAct1['command'] = lambda : self.snackButtonCommand(GameData.SnackData["snackOne"])
         self.snackAct1.grid( column = 1, row = 3, pady = self.verticalButtonPad )
         self.snackAct1.bind('<Enter>', lambda e, snack = GameData.SnackData["snackOne"]: self.snackEnterBind(snack))
         self.snackAct1.bind('<Leave>', lambda e: self.actionLeaveBind())
 
         self.snackAct2 = ttk.Button(self.gameFrame, text = "???", width = self.buttonWidth)
-        self.snackAct2['command'] = lambda : self.snackUpgrade(GameData.SnackData["snackTwo"])
+        self.snackAct2['command'] = lambda snackButton = self.snackAct2 : self.actionUpgrade(GameData.SnackData["snackTwo"], snackButton, "Snack")
         self.snackAct2.grid( column = 1, row = 4, pady = self.verticalButtonPad )
-        self.snackAct2.bind('<Enter>', lambda e, snack = GameData.snackTwo: self.snackUpgradeEnterBind(snack))
+        self.snackAct2.bind('<Enter>', lambda e, snack = GameData.SnackData["snackTwo"] : self.actionUpgradeEnterBind(snack))
         self.snackAct2.bind('<Leave>', lambda e: self.actionLeaveBind())
 
         self.snackAct3 = ttk.Button(self.gameFrame, text = "???", width = self.buttonWidth)
+        self.snackAct3['command'] = lambda snackButton = self.snackAct3 : self.actionUpgrade(GameData.SnackData["snackThree"], snackButton, "Snack")
         self.snackAct3.grid( column = 1, row = 5, pady = self.verticalButtonPad )
+        self.snackAct3.bind('<Enter>', lambda e, snack = GameData.SnackData["snackThree"] : self.actionUpgradeEnterBind(snack))
+        self.snackAct3.bind('<Leave>', lambda e: self.actionLeaveBind())
 
         self.excerciseLabel = Label(self.gameFrame, text = "Excercises")
         self.excerciseLabel.grid ( column = 4,  row = 2 )
-        self.excerciseAct1 = ttk.Button(self.gameFrame, text = GameData.exerciseOne.exerciseName, width = self.buttonWidth)
-        self.excerciseAct1['command'] = lambda : self.exerciseButtonCommand(GameData.exerciseOne)
+
+        self.excerciseAct1 = ttk.Button(self.gameFrame, text = GameData.ExerciseData["exerciseOne"]["exerciseName"], width = self.buttonWidth)
+        self.excerciseAct1['command'] = lambda : self.exerciseButtonCommand(GameData.ExerciseData["exerciseOne"])
         self.excerciseAct1.grid( column = 4, row = 3, pady = self.verticalButtonPad )
         self.excerciseAct1.bind('<Enter>', lambda e, exercise = GameData.ExerciseData["exerciseOne"] : self.exerciseEnterBind(exercise))
         self.excerciseAct1.bind('<Leave>', lambda e: self.actionLeaveBind())
 
         self.excerciseAct2 = ttk.Button(self.gameFrame, text = "???", width = self.buttonWidth)
+        self.excerciseAct2['command'] = lambda exerciseButton = self.excerciseAct2 : self.actionUpgrade(GameData.ExerciseData["exerciseTwo"], exerciseButton, "Exercise")
         self.excerciseAct2.grid( column = 4, row = 4, pady = self.verticalButtonPad )
+        self.excerciseAct2.bind('<Enter>', lambda e, exercise = GameData.ExerciseData["exerciseTwo"] : self.actionUpgradeEnterBind(exercise))
+        self.excerciseAct2.bind('<Leave>', lambda e: self.actionLeaveBind())
+
         self.excerciseAct3 = ttk.Button(self.gameFrame, text = "???", width = self.buttonWidth)
         self.excerciseAct3.grid( column = 4, row = 5, pady = self.verticalButtonPad )
+        self.excerciseAct3['command'] = lambda exerciseButton = self.excerciseAct3 : self.actionUpgrade(GameData.ExerciseData["exerciseThree"], exerciseButton, "Exercise")
+        self.excerciseAct3.bind('<Enter>', lambda e, exercise = GameData.ExerciseData["exerciseThree"] : self.actionUpgradeEnterBind(exercise))
+        self.excerciseAct3.bind('<Leave>', lambda e: self.actionLeaveBind())
 
         #This section is deticated for the different value bars
         #(Requires the installation of the fstrings library)
@@ -115,12 +126,6 @@ class GameWindow:
         self.actionUpgradeCostLabel = ttk.Label(self.infoFrame, style = "ActionUpgradeCostStyle.TLabel")
         self.actionUpgradeCostLabel.grid( column = 0, row = 4, sticky = W)
 
-    # def snackEnterBind(self,snack):
-    #     self.actionNameLabel['text'] = snack.snackName
-    #     self.actionDescLabel['text'] = snack.snackDesc
-    #     self.actionGainLabel['text'] = f"Joy Gain: {snack.joyPower}"
-    #     self.actionCostLabel['text'] = f"Calorie Cost: {snack.calCost}"
-
     def snackEnterBind(self, snackKey):
         # print(snackKey["snackName"]) <-- Correct formatting for JSON files
         self.actionNameLabel['text'] = snackKey["snackName"]
@@ -128,18 +133,15 @@ class GameWindow:
         self.actionGainLabel['text'] = f"Joy Gain: {snackKey['joyPower']}"
         self.actionCostLabel['text'] = f"Calorie Cost: {snackKey['calCost']}"
 
-    def snackUpgradeEnterBind(self, snack):
-        self.actionNameLabel['text'] = "???"
-        self.actionDescLabel['text'] = GameData.SnackUpgrade.upgradePreviewMessage
-        self.actionUpgradeCostLabel['text'] = f"Unlock Cost: {snack.unlockCost}"
-
     def exerciseEnterBind(self, exerciseKey):
         self.actionNameLabel['text'] = exerciseKey["exerciseName"]
         self.actionDescLabel['text'] = exerciseKey["exerciseDesc"]
         self.actionGainLabel['text'] = f"Calorie Gain: {exerciseKey['calGain']}"
-        # self.actionNameLabel['text'] = exercise.exerciseName
-        # self.actionDescLabel['text'] = exercise.exerciseDesc
-        # self.actionGainLabel['text'] = f"Calorie Gain: {exercise.calGain}"
+
+    def actionUpgradeEnterBind(self, action):
+        self.actionNameLabel['text'] = "???"
+        self.actionDescLabel['text'] = action["unlockPreviewMessage"]
+        self.actionUpgradeCostLabel['text'] = f"Unlock Cost: {action['unlockCost']}"
 
     def actionLeaveBind(self):
         self.actionNameLabel['text'] = ""
@@ -156,20 +158,37 @@ class GameWindow:
         PlayerClass.Player.doSnack(snack)
         self.updateWindow()
 
-    #Snack Upgrade function
-
-    def snackUpgrade(self, snack):
-        tempUpgradeCostVar = snack["unlockCost"]
-        if (PlayerClass.Player.caloriesBurned >= snack["unlockCost"]):
-            #Do the stuff to change said button into a snack button
-            print("The snack has been unlocked in theory!")
-        else:
-            self.actionUpgradeCostLabel['text'] = f"Unlock Cost: {tempUpgradeCostVar} \n You don't have enough Calories!"
-            #Figure out how to temp display this without using time.sleep
-
     def exerciseButtonCommand(self, exercise):
         PlayerClass.Player.doExercise(exercise)
         self.updateWindow()
+
+    def actionUpgrade(self, action, actionButton, actionType):
+        tempUpgradeCostVar = action["unlockCost"]
+        if ((PlayerClass.Player.caloriesBurned >= action["unlockCost"]) and (actionType == "Snack")):
+            PlayerClass.Player.caloriesBurned -= action["unlockCost"]
+            actionButton['text'] = action["snackName"]
+            actionButton['command'] = lambda : self.snackButtonCommand(action)
+            print("The command has CHANGED!")
+            self.actionUpgradeCostLabel['text'] = ""
+            actionButton.bind('<Enter>', lambda e : self.snackEnterBind(action))
+            self.snackEnterBind(action)
+            self.updateWindow()
+        elif ((PlayerClass.Player.caloriesBurned >= action["unlockCost"]) and (actionType == "Exercise")):
+            PlayerClass.Player.caloriesBurned -= action["unlockCost"]
+            actionButton['text'] = action["exerciseName"]
+            actionButton['command'] = lambda : self.exerciseButtonCommand(action)
+            print("The command has CHANGED!")
+            self.actionUpgradeCostLabel['text'] = ""
+            actionButton.bind('<Enter>', lambda e : self.exerciseEnterBind(action))
+            self.exerciseEnterBind(action)
+            self.updateWindow()
+        else:
+            self.actionUpgradeCostLabel['text'] = f"Unlock Cost: {tempUpgradeCostVar} \nYou don't have enough Calories!"
+            #Figure out how to temp display this without using time.sleep
+
+
+
+
 
     def gameClock(self):
 
@@ -204,4 +223,3 @@ class GameWindow:
         GameData.GameDifficulty.setGameDifficulty()
         self.gameClock()
         # print(self.gamePlayTime)
-
