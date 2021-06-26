@@ -4,7 +4,8 @@
 #### Game Mechanics
 
 - ✅ Create a timer that will constantly decrease the happiness bar
-- 🟩 Make sure that timer runs only while the game is open
+- 🟩 Make the info frame say the player doesn't have enough calories 
+- 🟩 Make the game timer run much faster so that the game can be played in minutes (up to three)
 
 #### Game Design / Looks
 

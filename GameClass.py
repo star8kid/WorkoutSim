@@ -13,12 +13,15 @@ class GameWindow:
         #Game Window code 
 
         self.gameWindow = Toplevel()
+        self.gameWindow.grid_rowconfigure(0, weight = 1, uniform = "x")
+        self.gameWindow.grid_rowconfigure(1, weight = 1, uniform = "x")
 
         self.gameFrameStyle = ttk.Style()
         self.gameFrame = ttk.Frame(self.gameWindow, padding = "150 20 150 20", relief = SUNKEN)
         self.gameFrame.grid( column = 0, row = 0, sticky = (N, W, E, S))
         self.gameWindow.columnconfigure(0, weight=1)
         self.gameWindow.rowconfigure(0, weight=1)
+        self.gameWindow.maxsize(580, 480)
         self.backButtonWidth = 18
         self.backButton = ttk.Button(self.gameFrame, text = "Back to Main Menu", width = self.backButtonWidth)
         self.backButton.grid( column = 2, row = 9 )
@@ -99,10 +102,11 @@ class GameWindow:
 
         self.infoFrameStyle = ttk.Style()
         self.infoFrameStyle.configure("InfoFrameStyle.TFrame", background = "gray28")
-        self.actionNameFont = font.Font( family = "Microsoft YaHei UI Light" , slant = "italic" , underline = True) 
+        self.actionNameFont = font.Font( family = "Microsoft YaHei UI Light" , slant = "italic" , underline = True, size = 15) 
         self.actionNameStyle = ttk.Style()
         self.actionNameStyle.configure("ActionNameStyle.TLabel", font = self.actionNameFont, foreground = "ghost white", background = "gray28")
-        self.actionDescFont = font.Font( family = "Microsoft YaHei UI")
+        # print(self.actionNameStyle.element_options("ActionNameStyle.TLabel"))
+        self.actionDescFont = font.Font( family = "Microsoft YaHei UI", size = 12)
         self.actionDescStyle = ttk.Style()
         self.actionDescStyle.configure("ActionDescStyle.TLabel", font = self.actionDescFont, foreground = "ghost white", background = "gray28")
         self.actionGainStyle = ttk.Style()
@@ -115,6 +119,7 @@ class GameWindow:
 
         self.infoFrame = ttk.Frame(self.gameWindow, style = "InfoFrameStyle.TFrame", padding = "150 20 150 20", relief = RAISED)
         self.infoFrame.grid( column = 0 , row = 1 , sticky = (N,W,E,S))
+        
         self.actionNameLabel = ttk.Label(self.infoFrame, style = "ActionNameStyle.TLabel")
         self.actionNameLabel.grid( column = 0 , row = 0, sticky = W)
         self.actionDescLabel = ttk.Label(self.infoFrame, style = "ActionDescStyle.TLabel", anchor = W)

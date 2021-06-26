@@ -35,7 +35,7 @@ from tkinter import font
 app = MenuClass.StartingMenu()
 game = GameClass.GameWindow()
 game.gameWindow.withdraw()
-#Window Configurations
+#Window Configurations (Name)
 allWindowsTitle = "Workout Simulator"
 app.root.resizable(0,0)
 game.gameWindow.resizable(0,0)
