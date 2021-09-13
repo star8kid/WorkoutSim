@@ -25,13 +25,26 @@ class Player:
         Player.caloriesBurned += exercise["calGain"]
 
     @staticmethod
+    # def doSnack(snack):
+    #     if(Player.caloriesBurned - snack["calCost"] < 0):
+    #         print("The player doesn't have enough calories!")
+    #         return False
+
+    #     elif(Player.happinessAmount + snack["joyPower"] > Player.maxHappiness):
+    #         Player.caloriesBurned -= snack["calCost"]
+    #         Player.happinessAmount = Player.maxHappiness
+    #     else:
+    #         Player.caloriesBurned -= snack["calCost"]
+    #         Player.happinessAmount += snack["joyPower"]
+
     def doSnack(snack):
-        if(Player.caloriesBurned - snack["calCost"] < 0):
-            print("The player doesn't have enough calories!")
-            pass
-        elif(Player.happinessAmount + snack["joyPower"] > Player.maxHappiness):
+        if(Player.caloriesBurned - snack["calCost"] >= 0):
             Player.caloriesBurned -= snack["calCost"]
-            Player.happinessAmount = Player.maxHappiness
+            if(Player.happinessAmount + snack["joyPower"] > Player.maxHappiness):
+                Player.happinessAmount = Player.maxHappiness
+            else:
+                Player.happinessAmount += snack["joyPower"]
+            return True
         else:
-            Player.caloriesBurned -= snack["calCost"]
-            Player.happinessAmount += snack["joyPower"]
+            print("NOT ENOUGH CALORIES DETECTED ! !")
+            return False

@@ -1,7 +1,7 @@
 {
     "exerciseOne":{
-        "exerciseName": "Running",
-        "exerciseDesc": "You already know how to \nwalk, so it doesn't count...",
+        "exerciseName": " Running ",
+        "exerciseDesc": "You already know how to walk,\nso it doesn't count...",
         "calGain": 1
     },
 
@@ -10,7 +10,7 @@
         "exerciseDesc": "Make sure your hands \nare touching!",
         "calGain": 3,
         "unlockCost": 30,
-        "unlockPreviewMessage": "This exercise has not been unlocked yet"
+        "unlockPreviewMessage": "This exercise has not been unlocked\nyet"
 
     },
 
@@ -19,7 +19,7 @@
         "exerciseDesc": "Keep your back straight and *oof* pull through!!",
         "calGain": 8,
         "unlockCost": 1800,
-        "unlockPreviewMessage": "This exercise has not been unlocked yet"
+        "unlockPreviewMessage": "This exercise has not been unlocked\nyet"
 
     }
 

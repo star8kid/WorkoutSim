@@ -1,7 +1,7 @@
 {
     "snackOne":
     {
-        "snackName":"Orange",
+        "snackName":" Orange ",
         "snackDesc":"A healthy, round citrus fruit. Yummy!",
         "calCost": 10,
         "joyPower": 2.0
@@ -12,7 +12,7 @@
         "snackDesc":"A tropical fruit. Great with smoothies,\nbut you don't own a blender.",
         "calCost": 15,
         "joyPower": 4.0,
-        "unlockPreviewMessage": "This snack has not been unlocked yet",
+        "unlockPreviewMessage": "This snack has not been unlocked\nyet",
         "unlockCost": 100
     },
 
@@ -21,7 +21,7 @@
         "snackDesc":"Light puffballs of awesomeness.\nLow salt to stay healthy still.",
         "calCost": 20,
         "joyPower": 6.0,
-        "unlockPreviewMessage": "This snack has not been unlocked yet",
+        "unlockPreviewMessage": "This snack has not been unlocked\nyet",
         "unlockCost": 1200
     }    
 

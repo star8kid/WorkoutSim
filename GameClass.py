@@ -5,6 +5,7 @@ from tkinter import font
 import time
 import GameData
 import PlayerClass
+import MenuClass
 
 
 class GameWindow:
@@ -15,6 +16,7 @@ class GameWindow:
         self.gameWindow = Toplevel()
         self.gameWindow.grid_rowconfigure(0, weight = 1, uniform = "x")
         self.gameWindow.grid_rowconfigure(1, weight = 1, uniform = "x")
+        # self.gameWindow.protocol("WM_DELETE_WINDOW", root.quit)
 
         self.gameFrameStyle = ttk.Style()
         self.gameFrame = ttk.Frame(self.gameWindow, padding = "150 20 150 20", relief = SUNKEN)
@@ -106,7 +108,7 @@ class GameWindow:
         self.actionNameStyle = ttk.Style()
         self.actionNameStyle.configure("ActionNameStyle.TLabel", font = self.actionNameFont, foreground = "ghost white", background = "gray28")
         # print(self.actionNameStyle.element_options("ActionNameStyle.TLabel"))
-        self.actionDescFont = font.Font( family = "Microsoft YaHei UI", size = 12)
+        self.actionDescFont = font.Font( family = "Microsoft YaHei UI", size = 13)
         self.actionDescStyle = ttk.Style()
         self.actionDescStyle.configure("ActionDescStyle.TLabel", font = self.actionDescFont, foreground = "ghost white", background = "gray28")
         self.actionGainStyle = ttk.Style()
@@ -144,7 +146,7 @@ class GameWindow:
         self.actionGainLabel['text'] = f"Calorie Gain: {exerciseKey['calGain']}"
 
     def actionUpgradeEnterBind(self, action):
-        self.actionNameLabel['text'] = "???"
+        self.actionNameLabel['text'] = " ??? "
         self.actionDescLabel['text'] = action["unlockPreviewMessage"]
         self.actionUpgradeCostLabel['text'] = f"Unlock Cost: {action['unlockCost']}"
 
@@ -160,7 +162,8 @@ class GameWindow:
         self.happinessLabel['text'] = f"Happiness: {PlayerClass.Player.happinessAmount}"
 
     def snackButtonCommand(self, snack):
-        PlayerClass.Player.doSnack(snack)
+        if(PlayerClass.Player.doSnack(snack) == False):
+            self.actionUpgradeCostLabel['text'] = "\n\nYou don't have enough Calories!"
         self.updateWindow()
 
     def exerciseButtonCommand(self, exercise):

@@ -29,8 +29,6 @@ from tkinter import font
         of exercise that the player does.
 """
 
-
-
 #Start of the application
 app = MenuClass.StartingMenu()
 game = GameClass.GameWindow()
@@ -43,7 +41,6 @@ app.root.title(allWindowsTitle)
 game.gameWindow.title(allWindowsTitle)
 app.playButton.config( command = lambda : app.switchToGame(game.gameWindow, game.startGame))
 game.backButton.config( command = lambda : app.switchToMenu(game.gameWindow))
-
 
 # Uncomment this later to test out the new time idea
 # game.gameClock()
